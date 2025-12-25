@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuestro Diciembre Mágico ❤️🎄</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --red:#b3000c;
+      --bright-red:#ff1a1a;
+      --green:#0c3823;
+      --deep-green:#082718;
+      --cream:#fffdf7;
+      --gold:#d4af37;
+      --text:#2C3E50;
+      --shadow: 0 18px 45px rgba(0,0,0,.35);
+      --shadow2: 0 10px 25px rgba(0,0,0,.25);
+      --glow: 0 0 18px rgba(212,175,55,.55);
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      padding:0;
+      overflow-x:hidden;
+      font-family:'Nunito', sans-serif;
+      color: var(--text);
+
+      background-color: var(--green);
+      background-image:
+        radial-gradient(900px 500px at 10% 10%, rgba(212,175,55,.18), transparent 60%),
+        radial-gradient(700px 500px at 90% 20%, rgba(255,26,26,.16), transparent 60%),
+        url('https://www.transparenttextures.com/patterns/snow.png'),
+        url('https://www.transparenttextures.com/patterns/christmas-candy.png'),
+        linear-gradient(rgba(12,56,35,.92), rgba(12,56,35,.92));
+      background-attachment: fixed;
+    }
+
+    /* --- Snowflakes --- */
+    .snowflake{
+      position: fixed;
+      top:-10px;
+      color:#fff;
+      font-size: 1.2em;
+      text-shadow: 0 0 6px rgba(0,0,0,.55);
+      z-index: 9999;
+      animation-name: snowflakes-fall, snowflakes-shake;
+      animation-duration: 12s, 4s;
+      animation-timing-function: linear, ease-in-out;
+      animation-iteration-count: infinite, infinite;
+      pointer-events:none;
+      opacity:.85;
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,.35));
+    }
+    @keyframes snowflakes-fall { 0% { top:-10% } 100% { top:110% } }
+    @keyframes snowflakes-shake { 0%,100% { transform: translateX(0) } 50% { transform: translateX(70px) } }
+    .snowflake:nth-of-type(1){ left: 2%;  animation-delay: 0s, 0s;   font-size: 1.0em; }
+    .snowflake:nth-of-type(2){ left: 10%; animation-delay: 1s, 1s;   font-size: 1.2em; }
+    .snowflake:nth-of-type(3){ left: 20%; animation-delay: 6s,.5s;   font-size: 1.1em; }
+    .snowflake:nth-of-type(4){ left: 30%; animation-delay: 4s, 2s;   font-size: 1.35em;}
+    .snowflake:nth-of-type(5){ left: 40%; animation-delay: 2s, 2s;   font-size: 1.05em;}
+    .snowflake:nth-of-type(6){ left: 50%; animation-delay: 8s, 3s;   font-size: 1.3em;}
+    .snowflake:nth-of-type(7){ left: 60%; animation-delay: 6s, 2s;   font-size: 1.1em;}
+    .snowflake:nth-of-type(8){ left: 70%; animation-delay: 2.5s, 1s; font-size: 1.25em;}
+    .snowflake:nth-of-type(9){ left: 80%; animation-delay: 1s, 0s;   font-size: 1.1em;}
+    .snowflake:nth-of-type(10){left: 90%; animation-delay: 3s,1.5s;  font-size: 1.35em;}
+
+    /* --- HEADER --- */
+    header{
+      text-align:center;
+      padding: 82px 20px 46px;
+      background: var(--red);
+      background-image:
+        linear-gradient(45deg, #990000 25%, transparent 25%, transparent 50%, #990000 50%, #990000 75%, transparent 75%, transparent),
+        radial-gradient(700px 220px at 50% 0%, rgba(255,255,255,.12), transparent 65%);
+      background-size: 50px 50px, auto;
+      color: var(--cream);
+      box-shadow: 0 8px 30px rgba(0,0,0,.45);
+      border-bottom: 10px solid var(--gold);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Top garland */
+    .lights-strand{
+      position:absolute;
+      top:-8px;
+      left:0;
+      width:100%;
+      height:44px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="44"><path d="M0 22 Q 30 44 60 22" stroke="%23555" fill="none" stroke-width="3"/></svg>');
+      background-repeat: repeat-x;
+      z-index: 10;
+      opacity:.9;
+    }
+
+    .light-bulb{
+      position:absolute;
+      top: 16px;
+      width: 14px;
+      height: 22px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px currentColor;
+      animation: flash 2s infinite alternate;
+      border: 1px solid rgba(0,0,0,.18);
+      z-index: 12;
+    }
+    .light-bulb:after{
+      content:"";
+      position:absolute;
+      top:-6px;
+      left:50%;
+      transform:translateX(-50%);
+      width:10px;
+      height:7px;
+      border-radius: 0 0 6px 6px;
+      background: rgba(0,0,0,.35);
+    }
+    @keyframes flash{
+      0%   { opacity: .55; filter: brightness(.9);  box-shadow: 0 0 10px currentColor; }
+      100% { opacity: 1;   filter: brightness(1.2); box-shadow: 0 0 22px currentColor; }
+    }
+
+    /* Wreath badge */
+    .wreath{
+      position:absolute;
+      right: 18px;
+      bottom: -28px;
+      width: 150px;
+      height: 150px;
+      border-radius: 999px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 45%),
+        radial-gradient(circle at 70% 40%, rgba(212,175,55,.22), transparent 46%),
+        radial-gradient(circle at 50% 50%, rgba(0,0,0,.0), rgba(0,0,0,.0) 55%, rgba(0,0,0,.25) 56%, rgba(0,0,0,.0) 70%),
+        conic-gradient(from 10deg, #0a5a31, #0c3823, #0a5a31, #0f6a3a, #0a5a31);
+      box-shadow: var(--shadow2);
+      border: 6px solid rgba(255,255,255,.18);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transform: rotate(10deg);
+      z-index: 8;
+    }
+    .wreath span{
+      width: 70px;
+      height: 70px;
+      border-radius: 999px;
+      background: rgba(255,253,247,.92);
+      display:grid;
+      place-items:center;
+      font-size: 30px;
+      box-shadow: inset 0 0 20px rgba(0,0,0,.15);
+      border: 3px solid rgba(212,175,55,.7);
+    }
+
+    h1{
+      font-family:'Mountains of Christmas', cursive;
+      font-size: clamp(2.6rem, 5vw, 4.8rem);
+      margin:0;
+      text-shadow: 3px 3px 0px var(--green), 4px 4px 12px rgba(0,0,0,.55);
+      color: var(--gold);
+      letter-spacing: 2px;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.35));
+      position:relative;
+      z-index: 20;
+    }
+
+    .subtitle{
+      margin-top: 14px;
+      font-size: 1.25em;
+      font-weight: 800;
+      color: var(--cream);
+      text-shadow: 1px 1px 3px rgba(0,0,0,.55);
+      position:relative;
+      z-index: 20;
+    }
+
+    /* Little bouncing emoji row */
+    .emoji-row{
+      margin-top: 18px;
+      display:flex;
+      justify-content:center;
+      gap: 10px;
+      flex-wrap:wrap;
+      position:relative;
+      z-index: 20;
+    }
+    .emoji-chip{
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      box-shadow: 0 10px 20px rgba(0,0,0,.25);
+      backdrop-filter: blur(6px);
+      animation: bob 2.2s ease-in-out infinite;
+    }
+    .emoji-chip:nth-child(2){ animation-delay:.2s; }
+    .emoji-chip:nth-child(3){ animation-delay:.4s; }
+    .emoji-chip:nth-child(4){ animation-delay:.6s; }
+    .emoji-chip:nth-child(5){ animation-delay:.8s; }
+    @keyframes bob{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-6px); }
+    }
+
+    /* --- ACTION BAR --- */
+    .actionbar{
+      max-width: 1100px;
+      margin: 18px auto 0;
+      padding: 0 20px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+      justify-content:center;
+      align-items:center;
+    }
+    .search{
+      flex: 1 1 260px;
+      min-width: 250px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      padding: 12px 14px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 22px rgba(0,0,0,.25);
+      color: rgba(255,255,255,.95);
+    }
+    .search input{
+      width:100%;
+      border:0;
+      outline:0;
+      background: transparent;
+      color:#fff;
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .search input::placeholder{ color: rgba(255,255,255,.78); }
+
+    .btn-big{
+      cursor:pointer;
+      border:0;
+      padding: 12px 16px;
+      border-radius: 14px;
+      font-weight: 900;
+      letter-spacing:.2px;
+      background: linear-gradient(to bottom, var(--gold), #bfa030);
+      color: var(--deep-green);
+      box-shadow: 0 12px 22px rgba(0,0,0,.3);
+      transition: transform .15s ease, filter .15s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      white-space:nowrap;
+      border:1px solid rgba(0,0,0,.12);
+    }
+    .btn-big:hover{ filter: brightness(1.05); }
+    .btn-big:active{ transform: translateY(1px); }
+
+    /* --- CONTAINER / CARDS --- */
+    .container{
+      max-width: 1100px;
+      margin: 34px auto 60px;
+      padding: 0 20px;
+      display:grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .card{
+      background-color: var(--cream);
+      background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+      border-radius: 22px;
+      padding: 28px 20px 18px;
+      box-shadow: var(--shadow2);
+      border: 4px solid transparent;
+      border-image: repeating-linear-gradient(45deg, var(--red), var(--red) 10px, var(--cream) 10px, var(--cream) 20px) 1;
+      transition: transform .25s ease, box-shadow .25s ease, filter .25s ease;
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      overflow: visible;
+    }
+    .card:hover{
+      transform: translateY(-10px) rotate(-.2deg);
+      box-shadow: 0 22px 45px rgba(0,0,0,.35);
+      filter: saturate(1.05);
+    }
+
+    /* Corner ornament + ribbon */
+    .card::after{
+      content:'🎄';
+      position:absolute;
+      top:-16px;
+      right:-10px;
+      font-size: 2.7em;
+      filter: drop-shadow(2px 2px 2px rgba(0,0,0,.35));
+      transform: rotate(12deg);
+      z-index: 3;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      top:-8px;
+      left: -8px;
+      width: 64px;
+      height: 64px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 55%),
+                  linear-gradient(135deg, rgba(212,175,55,.95), rgba(179,0,12,.92));
+      border-radius: 18px;
+      transform: rotate(12deg);
+      box-shadow: 0 10px 18px rgba(0,0,0,.25);
+      opacity:.9;
+      z-index: 1;
+    }
+
+    .date-badge{
+      background: linear-gradient(135deg, var(--red), #900);
+      color: var(--gold);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-family: 'Mountains of Christmas', cursive;
+      font-size: 1.55em;
+      position:absolute;
+      top:-22px;
+      left: 16px;
+      box-shadow: 0 6px 12px rgba(0,0,0,.35);
+      border: 2px solid var(--gold);
+      z-index: 4;
+      text-shadow: 1px 1px 0 rgba(0,0,0,.22);
+    }
+
+    .card-content{
+      margin-top: 22px;
+      margin-bottom: 16px;
+      font-size: 1.1em;
+      line-height: 1.65;
+      color: #3f3f3f;
+    }
+
+    .decoration{
+      font-size: 1.95em;
+      text-align:right;
+      margin-top:auto;
+      filter: drop-shadow(1px 1px 2px rgba(0,0,0,.22));
+      opacity:.95;
+    }
+
+    /* Buttons */
+    .btn-container{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .btn{
+      background: linear-gradient(to bottom, var(--gold), #bfa030);
+      color: var(--deep-green);
+      text-decoration:none;
+      padding: 11px 14px;
+      border-radius: 13px;
+      font-weight: 900;
+      font-size: .95em;
+      transition: all .25s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      flex: 1;
+      justify-content:center;
+      white-space:nowrap;
+      border: 1px solid rgba(0,0,0,.10);
+      box-shadow: 0 6px 10px rgba(0,0,0,.12);
+    }
+    .btn:hover{
+      background: linear-gradient(to bottom, var(--red), #900);
+      color: var(--gold);
+      border-color: rgba(179,0,12,.6);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 16px rgba(179,0,12,.25);
+    }
+
+    /* Special cards */
+    .card.sleepy{
+      opacity: .86;
+      filter: grayscale(.1);
+    }
+    .card.sleepy .date-badge{
+      background: linear-gradient(135deg, #555, #2f2f2f);
+      color: #e6e6e6;
+      border-color: rgba(255,255,255,.35);
+    }
+
+    .card.super{
+      border-image: repeating-linear-gradient(45deg, var(--gold), var(--gold) 10px, var(--red) 10px, var(--red) 20px) 1;
+      background: #fff7f7;
+      position:relative;
+    }
+    .card.super::after{ content:'🎅'; }
+    .card.super .date-badge{
+      background: linear-gradient(135deg, var(--gold), #f4d16b);
+      color: var(--red);
+      font-size: 1.85em;
+      top: -26px;
+      box-shadow: 0 10px 16px rgba(0,0,0,.28);
+    }
+    .sparkles{
+      position:absolute;
+      inset: 0;
+      pointer-events:none;
+      background:
+        radial-gradient(10px 10px at 15% 20%, rgba(212,175,55,.75), transparent 60%),
+        radial-gradient(9px 9px at 80% 30%, rgba(255,26,26,.55), transparent 60%),
+        radial-gradient(12px 12px at 70% 75%, rgba(255,255,255,.55), transparent 62%),
+        radial-gradient(8px 8px at 30% 70%, rgba(212,175,55,.65), transparent 60%);
+      opacity:.6;
+    }
+
+    /* --- FINAL SECTION / LETTER --- */
+    .final-section-wrapper{
+      padding: 40px 20px 90px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .final-section{
+      background-color: #fffdf7;
+      background-image:
+        radial-gradient(600px 220px at 50% 0%, rgba(212,175,55,.18), transparent 60%),
+        url('https://www.transparenttextures.com/patterns/old-map.png');
+      max-width: 860px;
+      width:100%;
+      padding: 54px 46px;
+      border-radius: 16px;
+      border: 10px solid var(--red);
+      outline: 6px solid var(--gold);
+      text-align:center;
+      box-shadow: 0 26px 55px rgba(0,0,0,.55);
+      position:relative;
+      overflow:hidden;
+    }
+    .final-section:before{
+      content:"";
+      position:absolute;
+      inset:-3px;
+      background:
+        repeating-linear-gradient(45deg, rgba(179,0,12,.06) 0 14px, rgba(255,255,255,0) 14px 24px);
+      opacity:.55;
+      pointer-events:none;
+    }
+
+    /* Wax seal */
+    .final-section::after{
+      content: '🎅 Sello Oficial';
+      position:absolute;
+      bottom: -34px;
+      right: 34px;
+      width: 128px;
+      height: 128px;
+      background: var(--red);
+      border-radius: 50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: var(--gold);
+      font-family:'Mountains of Christmas', cursive;
+      font-weight: 900;
+      font-size: 1.2em;
+      box-shadow: inset 0 0 22px rgba(0,0,0,.55), 0 10px 22px rgba(0,0,0,.35);
+      border: 3px solid var(--gold);
+      transform: rotate(-14deg);
+      text-shadow: 1px 1px 0 rgba(0,0,0,.25);
+      z-index: 3;
+    }
+
+    .final-section h2{
+      font-family:'Mountains of Christmas', cursive;
+      font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+      color: var(--red);
+      margin:0 0 26px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,.22);
+      position:relative;
+      z-index: 2;
+    }
+
+    .final-text{
+      font-size: 1.25em;
+      color: #2e2e2e;
+      white-space: pre-line;
+      line-height: 1.95;
+      font-family:'Nunito', sans-serif;
+      border-top: 2px solid rgba(179,0,12,.22);
+      border-bottom: 2px solid rgba(179,0,12,.22);
+      padding: 30px 0;
+      position:relative;
+      z-index:2;
+    }
+
+    /* Little stamps */
+    .stamps{
+      margin-top: 18px;
+      display:flex;
+      justify-content:center;
+      gap: 10px;
+      flex-wrap:wrap;
+      position:relative;
+      z-index:2;
+    }
+    .stamp{
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(12,56,35,.08);
+      border: 1px solid rgba(12,56,35,.18);
+      font-weight: 900;
+      color: #0c3823;
+      box-shadow: 0 8px 14px rgba(0,0,0,.12);
+    }
+
+    footer{
+      text-align:center;
+      color: var(--gold);
+      padding: 30px 16px 36px;
+      font-size: 1.15em;
+      font-family:'Mountains of Christmas', cursive;
+      text-shadow: 1px 1px 2px rgba(0,0,0,.85);
+      background: rgba(0,0,0,.22);
+      border-top: 2px solid rgba(255,255,255,.08);
+    }
+
+    /* Tiny helper */
+    .hint{
+      max-width: 1100px;
+      margin: 14px auto 0;
+      padding: 0 20px;
+      color: rgba(255,255,255,.9);
+      text-align:center;
+      font-weight: 800;
+      text-shadow: 1px 1px 3px rgba(0,0,0,.45);
+    }
+    .hint small{
+      display:inline-block;
+      margin-top: 8px;
+      color: rgba(255,255,255,.8);
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Snow -->
+  <div class="snowflake">❅</div><div class="snowflake">❆</div><div class="snowflake">❅</div><div class="snowflake">❆</div><div class="snowflake">❅</div>
+  <div class="snowflake">❆</div><div class="snowflake">❅</div><div class="snowflake">❆</div><div class="snowflake">❅</div><div class="snowflake">❆</div>
+
+  <header>
+    <div class="lights-strand"></div>
+
+    <!-- bulbs -->
+    <div class="light-bulb" style="left: 4%;  animation-delay: 0s;  background:#ff2b2b; color:#ff2b2b;"></div>
+    <div class="light-bulb" style="left: 12%; animation-delay: 1s;  background:#00e676; color:#00e676;"></div>
+    <div class="light-bulb" style="left: 20%; animation-delay: .5s; background:#ffd700; color:#ffd700;"></div>
+    <div class="light-bulb" style="left: 28%; animation-delay: 1.5s;background:#4dabff; color:#4dabff;"></div>
+    <div class="light-bulb" style="left: 36%; animation-delay: .2s; background:#ff2b2b; color:#ff2b2b;"></div>
+    <div class="light-bulb" style="left: 44%; animation-delay: 1.2s;background:#00e676; color:#00e676;"></div>
+    <div class="light-bulb" style="left: 52%; animation-delay: .8s; background:#ffd700; color:#ffd700;"></div>
+    <div class="light-bulb" style="left: 60%; animation-delay: 1.8s;background:#4dabff; color:#4dabff;"></div>
+    <div class="light-bulb" style="left: 68%; animation-delay: .4s; background:#ff2b2b; color:#ff2b2b;"></div>
+    <div class="light-bulb" style="left: 76%; animation-delay: 1.4s;background:#00e676; color:#00e676;"></div>
+    <div class="light-bulb" style="left: 84%; animation-delay: .6s; background:#ffd700; color:#ffd700;"></div>
+    <div class="light-bulb" style="left: 92%; animation-delay: 1.6s;background:#4dabff; color:#4dabff;"></div>
+
+    <h1>🎄 Nuestro Diciembre 🎄</h1>
+    <div class="subtitle">Recuerdos, risas y mucho amor en cada día ❤️✨</div>
+    <div class="emoji-row">
+      <div class="emoji-chip">🎁 24 días</div>
+      <div class="emoji-chip">📸 Google Fotos</div>
+      <div class="emoji-chip">🧸 peluchinis</div>
+      <div class="emoji-chip">🍪 navipipi</div>
+      <div class="emoji-chip">💌 totoe</div>
+    </div>
+
+    <div class="wreath" aria-hidden="true"><span>🎀</span></div>
+  </header>
+
+  <div class="hint">
+    ✨ Tip: buscá por “unicenter”, “luna”, “diploma”, “sodi”… y encontrá el recuerdo al toque 😚
+    <br><small>Si el navegador bloquea abrir muchos links, abrilos día por día y listo 💚</small>
+  </div>
+
+  <div class="actionbar">
+    <div class="search">
+      🔎 <input id="q" type="text" placeholder="Buscar un recuerdo..." />
+    </div>
+    <button class="btn-big" id="openAll">🎀 Abrir todos los links</button>
+  </div>
+
+  <div class="container" id="cards"></div>
+
+  <div class="final-section-wrapper">
+    <div class="final-section">
+      <h2>🎀 Un Mensaje Especial para Ti 🎀</h2>
+      <div class="final-text" id="finalText"></div>
+      <div class="stamps">
+        <div class="stamp">🎄 Feliz Navidad</div>
+        <div class="stamp">❤️ Te amo</div>
+        <div class="stamp">✨ Perfección</div>
+        <div class="stamp">🫶 Mi compañera</div>
+      </div>
+      <div class="sparkles" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <footer>
+    Hecho con todo mi amor para mi persona favorita en el mundo. <br />
+    ¡Feliz Navidad mi vida! 🎄❤️✨
+  </footer>
+
+  <script>
+    const memories = [
+      { d:"1 Dic",  t:"¡Bienvenido Oscar a la familia de peluchinis! 🧸", c:"", deco:"🐶", links:[
+        ["🎁 Ver a Oscar", "https://photos.app.goo.gl/1XgnvujdWuTXh87o6"]
+      ]},
+      { d:"3 Dic",  t:"Te recontra gané en el Spotify Wrapped 🎵", c:"Y luego me acompañaste a jugar dos horas de fútbol 🙈.", deco:"⚽🎶", links:[] },
+      { d:"4 Dic",  t:"XD 😭", c:"Y la luna estaba tan bonita como tú 🌙✨", deco:"🌝✨", links:[
+        ["🎁 Foto XD", "https://photos.app.goo.gl/WFSE61U9YWMRnEKM7"],
+        ["🎁 La Luna", "https://photos.app.goo.gl/WFSE61U9YWMRnEKM7"],
+        ["🎁 ???",     "https://photos.app.goo.gl/kPcPAVrGCbyrWtHS7"]
+      ]},
+      { d:"5 Dic",  t:"¡Fuimos a ver FNAF 2 con Masilin! 🐻🍕", c:"", deco:"🎬🍿", links:[] },
+      { d:"6 Dic",  t:"Visitamos el Landmark y Unicenter full Navipipi ✨", c:"Todo decorado, todo navidad, todo hermoso 🥹🎄", deco:"🎄🛍️", links:[
+        ["🎁 Landmark", "https://photos.app.goo.gl/dSa6NdsoABm2uaLh9"],
+        ["🎁 Unicenter", "https://photos.app.goo.gl/Lnz5Q8F2T25c3NFX7"]
+      ]},
+      { d:"7 Dic",  t:"Sodi y tuntuntuntuni 😈", c:"Fuiste a lo de Agus y comiste una chanchini.", deco:"🍔😺", links:[
+        ["🎁 Sodi", "https://photos.app.goo.gl/wsJsdE3MmGzAAv5S7"],
+        ["🎁 Chanchini", "https://photos.app.goo.gl/R31DUuUxKPRC9t6L8"]
+      ]},
+      { d:"8 Dic",  t:"Tú con Pinci 🦀", c:"", deco:"🥰🌊", links:[
+        ["🎁 Ver foto", "https://photos.app.goo.gl/5Sd67NpV8Ftj1Nvs5"]
+      ]},
+      { d:"9 Dic",  t:"¡Cumple de Graciela! 🎂", c:"", deco:"🎉🍰", links:[
+        ["🎁 Cumple", "https://photos.app.goo.gl/wmoUkNesXVBJSY9y7"],
+        ["🎁 Y esta??", "https://photos.app.goo.gl/Qbqc9XgZaa4LZQAF7"]
+      ]},
+      { d:"10 Dic", t:"Fuimos a comprar papinis y tu ropini 🛍️", c:"Solo tengo este video je 😌", deco:"👗🛒", links:[
+        ["🎁 Video", "https://photos.app.goo.gl/os6CuBYWtcGvNv2q9"]
+      ]},
+      { d:"11 Dic", t:"Dónde taban no... 😭", c:"<b>DELA:</b> GRACIAS por acompañarme mi vida, fue una noche muy especial y compartirla contigo lo hizo mil veces mejor ✨", deco:"🥂✨", links:[
+        ["🎁 Foto 1", "https://photos.app.goo.gl/kogMYiy9wiRG58S39"],
+        ["🎁 Foto DELA", "https://photos.app.goo.gl/sZQAprtvUNJziKzh6"]
+      ]},
+      { d:"12 Dic", t:"Exposición de Totoooeeeeee 🖼️✨", c:"Y entrega de diploma de Loliiiii (luego vemos las fotos juntitos) 🎓🥹", deco:"🎓📜", links:[
+        ["🎁 Expo Toto", "https://photos.app.goo.gl/sZQAprtvUNJziKzh6"]
+      ]},
+      { d:"13 Dic", t:"¡Cumple de Masiiiii! 🎂💥", c:"Dónde concha se metían no... 😭", deco:"🎈🎂", links:[
+        ["🎁 Ver foto", "https://photos.app.goo.gl/3ywEQPAX4ZTcZMtL8"]
+      ]},
+      { d:"14 Dic", t:"Dónde vas santa hdp 😭🎅", c:"Bagelsss 🥯 y fiestita de Lola 🎉", deco:"🎅🥯", links:[
+        ["🎁 Santa", "https://photos.app.goo.gl/63xN75xWcwobu6vX9"],
+        ["🎁 Bagels", "https://photos.app.goo.gl/63xN75xWcwobu6vX9"],
+        ["🎁 Lola", "https://photos.app.goo.gl/M2JiFgc8cZwtsddA6"]
+      ]},
+      { d:"15 Dic", t:"No me sale una... 😅", c:"", deco:"😅🤷‍♂️", links:[
+        ["🎁 Ver", "https://photos.app.goo.gl/F995Ajgt2pQeJLA28"]
+      ]},
+      { d:"16 Dic", t:"¡Nuevos accesorios! ✨", c:"Y ratatula 🐀", deco:"💍🐀", links:[
+        ["🎁 Accesorios", "https://photos.app.goo.gl/M2JiFgc8cZwtsddA6"],
+        ["🎁 Ratatula", "https://photos.app.goo.gl/1EHANDydyQ3hVNC96"]
+      ]},
+      { d:"17 Dic", t:"Te explotó una bomba bldo 😭💣", c:"", deco:"💥😱", links:[
+        ["🎁 Bomba 1", "https://photos.app.goo.gl/pkK9KJmfuPB9CSeM7"],
+        ["🎁 Bomba 2", "https://photos.app.goo.gl/Swvy6AJtcdznkZ3a8"]
+      ]},
+      { d:"18 Dic", t:"Patito lavado, tuntini y el pibe 🦆🛁", c:"", deco:"🦆🛁", links:[
+        ["🎁 Patito", "https://photos.app.goo.gl/LMt71R9mcRuwxhhm8"],
+        ["🎁 Tuntini", "https://photos.app.goo.gl/hCNLMvG2totm2iAp6"],
+        ["🎁 El Pibe", "https://photos.app.goo.gl/tKLUPjNnQy3VY2HV8"]
+      ]},
+      { d:"19 Dic", t:"Arbolito y chodi 🎄", c:"", deco:"🎄✨", links:[
+        ["🎁 Ver Arbolito", "https://photos.app.goo.gl/cJuJ6DFaYavrQ4pt6"]
+      ]},
+      { d:"20 Dic", t:"Unicenter caminando por primera vez 🚶‍♂️", c:"Top 3 peores restos 🍽️ — Párense de mano: apuestas fallidas 🤝😭", deco:"🚶‍♂️🍽️", links:[
+        ["🎁 Unicenter", "https://photos.app.goo.gl/hmDGVFetw1xXnHQH9"],
+        ["🎁 Restos", "https://photos.app.goo.gl/Bd7yVdTvVP1SVgK39"]
+      ]},
+      { d:"21 Dic", t:"Esperando la Navidad... Zzz... 💤", c:"A veces el mejor recuerdo es descansar juntitos 🤍", deco:"🛏️💤", links:[], sleepy:true },
+      { d:"22 Dic", t:"¡Recibida de Valen! 👩‍🎓🎉", c:"", deco:"🎓🎉", links:[
+        ["🎁 Foto 1", "https://photos.app.goo.gl/Gc2YYwp96Ud4j5699"],
+        ["🎁 Foto 2", "https://photos.app.goo.gl/SLswKgRCjuYep9uT6"],
+        ["🎁 Foto 3", "https://photos.app.goo.gl/h57zamMCTaAGGgNM8"]
+      ]},
+      { d:"23 Dic", t:"Ya llega ya llega... ⏳🎄", c:"Dame la foto más poronga del arcoíris... no, no tan poronga 😭🌈", deco:"🌈⏳", links:[
+        ["🎁 Ya llega 1", "https://photos.app.goo.gl/yRJfDQr1uLhsCH9E8"],
+        ["🎁 Ya llega 2", "https://photos.app.goo.gl/yUby2E51F7SDvnmHA"],
+        ["🎁 Arcoíris", "https://photos.app.goo.gl/mzLFPQY9rE22i92q7"]
+      ]},
+      { d:"24 Dic", t:"Día de laburo total con el deckpipi 💻🎄", c:"Sali de ahí bldo por favor 😭 — A mimir 😴 — Sodi re cagada 😭", deco:"🎅🎄🎁", super:true, links:[
+        ["🎁 Deck 1", "https://photos.app.goo.gl/2MyZBojCUiooHb9g6"],
+        ["🎁 Deck 2", "https://photos.app.goo.gl/x8puKa2ccSaU5aez5"],
+        ["🎁 Sali de ahí", "https://photos.app.goo.gl/moArNKutaXZayopC9"],
+        ["🎁 A mimir", "https://photos.app.goo.gl/S6EDXh38PePxV9Q68"],
+        ["🎁 Sodi", "https://photos.app.goo.gl/26ua6M4k2qgwmAYY9"]
+      ]}
+    ];
+
+    const closingText =
+`Totoe: deseo para este fin de año, largo y cansador, que hayas pasado un mes hermoso, lleno de regalitos y amor de todas las personas que te amamos y te queremos.
+Si tuviese que poner describirte en una palabra en este 2025 sería Perfección, en todos los sentidos donde te viste involucrada: con la familia, con tus amigos, con la facultad, con mi familia y por sobre todo conmigo y nuestra relación.
+Te amo con todo mi corazón y no puedo estar más orgulloso de la compañera que tengo al lado que eres tú.
+Feliz navidad Totoe! 🎄❤️✨`;
+
+    const cardsEl = document.getElementById("cards");
+    const finalEl = document.getElementById("finalText");
+    const qEl = document.getElementById("q");
+    const openAllBtn = document.getElementById("openAll");
+
+    finalEl.textContent = closingText;
+
+    function render(){
+      const q = (qEl.value || "").trim().toLowerCase();
+      const filtered = memories.filter(m => (m.d + " " + m.t + " " + (m.c||"")).toLowerCase().includes(q));
+
+      cardsEl.innerHTML = filtered.map((m) => {
+        const cls = ["card"];
+        if(m.sleepy) cls.push("sleepy");
+        if(m.super) cls.push("super");
+
+        const content = (m.c && m.c.trim()) ? `<div class="card-content">${m.t}<br>${m.c}</div>` : `<div class="card-content">${m.t}</div>`;
+        const buttons = (m.links && m.links.length)
+          ? `<div class="btn-container">${
+              m.links.map(([label,url]) => `<a href="${url}" target="_blank" rel="noopener noreferrer" class="btn">${label}</a>`).join("")
+            }</div>`
+          : "";
+
+        return `
+          <div class="${cls.join(" ")}">
+            ${m.super ? `<div class="sparkles" aria-hidden="true"></div>` : ""}
+            <div class="date-badge">${m.d}</div>
+            ${content}
+            ${buttons}
+            <div class="decoration">${m.deco || "✨"}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    qEl.addEventListener("input", render);
+
+    openAllBtn.addEventListener("click", () => {
+      const urls = memories.flatMap(m => (m.links || []).map(x => x[1]));
+      urls.forEach((u, i) => setTimeout(() => window.open(u, "_blank", "noopener,noreferrer"), i * 80));
+    });
+
+    render();
+  </script>
+</body>
+</html>
